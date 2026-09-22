@@ -1,0 +1,6 @@
+Blog rendering fix:
+- Restored the Blog page from the known-good original Blog HTML.
+- Removed the extra SEO-topic footer section requested earlier.
+- Kept Google verification, canonical, robots, hreflang and RSS as non-rendering head metadata.
+- Avoided injected JSON-LD/DOM scripts that could interfere with the page runtime.
+- Added Netlify redirects for /blog.html and /blog -> /blog/.

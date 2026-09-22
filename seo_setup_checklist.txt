@@ -1,0 +1,9 @@
+Astro Avyug SEO package checklist
+
+1. Upload all files preserving folders.
+2. Verify https://astroavyug.com/ in Google Search Console using the supplied meta tag.
+3. Submit https://astroavyug.com/sitemap.xml.
+4. Request indexing for / and /blog/ after deployment.
+5. If HTML-file verification is selected, upload Google's exact google*.html file to the domain root.
+6. Add real translated content to /en/ and /hi/ for stronger international SEO; do not duplicate content indefinitely.
+7. Add each future individual blog article as its own canonical URL and sitemap entry when published.

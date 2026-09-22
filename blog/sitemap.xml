@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://astroavyug.com/blog/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://astroavyug.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://astroavyug.com/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://astroavyug.com/blog/"/>
+  </url>
+
+  <url><loc>https://astroavyug.com/about-astro-avyug.html</loc></url>
+</urlset>

@@ -1,0 +1,8 @@
+Google Search Console verification meta tag installed in:
+  /index.html
+  /blog/index.html
+
+Verification token: m_yYjP3RCjCkW50cfH13YkGP9QCqBb7qiKGmV76JODo
+
+For HTML-file verification, Google must provide the exact google*.html filename/content.
+Do not upload a fabricated google*.html file; use the file downloaded from Search Console if that method is selected.

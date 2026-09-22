@@ -1,0 +1,10 @@
+Astro Avyug technical SEO enhancements
+- Responsive viewport/theme metadata
+- hreflang links for English/Hindi root versions
+- Resource hints for Google Tag Manager
+- Deferred local JavaScript where safe
+- Lazy loading for images where missing
+- First image fetch priority
+- Referrer policy meta
+- security.txt placeholder (does not replace server security headers)
+- Existing GA4, structured data, sitemap, robots.txt, Open Graph and llms.txt retained

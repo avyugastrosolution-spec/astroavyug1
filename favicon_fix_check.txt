@@ -1,0 +1,3 @@
+Favicon cleanup: one canonical <link rel="icon" href="/favicon.ico" sizes="any"> per HTML page.
+Google Search uses one favicon per hostname; blog/services/localized pages share the same root favicon URL.
+Manifest icons point to existing /favicon-192x192.png and /favicon-512x512.png.

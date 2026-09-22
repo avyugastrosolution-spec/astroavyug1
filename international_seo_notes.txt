@@ -1,0 +1,10 @@
+International URL structure added:
+https://astroavyug.com/      -> default Home
+https://astroavyug.com/en/   -> English Home
+https://astroavyug.com/hi/   -> Hindi Home
+https://astroavyug.com/blog/ -> default Blog
+https://astroavyug.com/en/blog/ -> English Blog entry
+https://astroavyug.com/hi/blog/ -> Hindi Blog entry
+
+Hreflang and sitemap alternate links now reference real URLs.
+The English/Hindi pages currently use the existing site content as a localized entry point; for maximum SEO benefit, translate the visible content natively rather than duplicating it.
