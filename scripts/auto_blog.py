@@ -107,7 +107,7 @@ path.write_text(page,encoding="utf-8")
 
 index= BLOG/"index.html"
 s=index.read_text(encoding="utf-8")
-marker='<div class="blog-grid">'
+marker='<div class="blog-grid" id="grid" style="margin-top:28px">'
 if marker not in s: raise SystemExit("Blog grid marker not found")
 card='<article class="blog-card" data-cat="'+cat.lower()+'" data-text="'+html.escape(a["title"]+" "+a["excerpt"],quote=True)+'"><span class="tag">'+cat+'</span><h3>'+title+'</h3><p>'+excerpt+'</p><div class="read"><a href="/blog/posts/'+slug+'.html">Read More →</a></div></article>'
 index.write_text(s.replace(marker,marker+"\n"+card,1),encoding="utf-8")
