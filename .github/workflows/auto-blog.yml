@@ -1,3 +1,47 @@
+name: Astro Avyug - Automatic AI Blog
+
+on:
+  schedule:
+    - cron: "30 3 * * 1,3,5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ------------------------------------------------
+      # Checkout repository
+      # ------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ------------------------------------------------
+      # Setup Python
+      # ------------------------------------------------
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ------------------------------------------------
+      # Generate Blog
+      # ------------------------------------------------
+      - name: Generate blog
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/auto_blog.py
+
+      # ------------------------------------------------
+      # Commit and Push
+      # ------------------------------------------------
       - name: Commit and push
         run: |
           git config user.name "Astro Avyug Blog Bot"
@@ -6,11 +50,17 @@
           git add blog/ sitemap.xml
 
           if git diff --cached --quiet; then
+            echo "No changes to commit."
             exit 0
           fi
 
           git commit -m "Publish new Astro Avyug AI blog"
 
-          git pull --rebase origin main
+          # Get latest changes from main
+          git fetch origin main
 
+          # Rebase generated changes on latest main
+          git rebase origin/main
+
+          # Push latest rebased commit
           git push origin HEAD:main
