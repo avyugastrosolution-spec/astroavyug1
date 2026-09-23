@@ -1,78 +1,1190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/favicon.ico" sizes="any">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Numerology | Astro Avyug</title>
-<meta name="description" content="Numerology consultation and number analysis.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Numerology | Numerology Consultation | Astro Avyug</title>
+
+<meta name="description" content="Astro Avyug Numerology Consultation – Life Path Number, Name Number, Personal Year Cycles, Personality, Career, Relationship and personal guidance through traditional numerology.">
+<meta name="keywords" content="Numerology, Numerology Consultation, Life Path Number, Name Numerology, Personal Year, Numerology Astro Avyug, Vedic Numerology, Career Numerology, Marriage Numerology">
+<meta name="author" content="Astro Avyug">
+<meta name="robots" content="index, follow">
+
 <link rel="canonical" href="https://astroavyug.com/services/numerology.html">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta property="og:title" content="Numerology | Astro Avyug">
-<meta property="og:description" content="Numerology consultation and number analysis.">
+
 <meta property="og:type" content="website">
+<meta property="og:title" content="Numerology Consultation | Astro Avyug">
+<meta property="og:description" content="Explore Life Path, Name Numbers, Personal Cycles and traditional Numerology guidance with Astro Avyug.">
 <meta property="og:url" content="https://astroavyug.com/services/numerology.html">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://astroavyug.com/services/numerology.html#webpage",
-      "url": "https://astroavyug.com/services/numerology.html",
-      "name": "Numerology | Astro Avyug",
-      "description": "Numerology consultation and number analysis.",
-      "isPartOf": {
-        "@id": "https://astroavyug.com/#website"
-      },
-      "about": {
-        "@id": "https://astroavyug.com/#person"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://astroavyug.com/services/numerology.html#service",
-      "name": "Numerology",
-      "description": "Numerology consultation and number analysis.",
-      "url": "https://astroavyug.com/services/numerology.html",
-      "provider": {
-        "@id": "https://astroavyug.com/#organization"
-      },
-      "areaServed": "Worldwide"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://astroavyug.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://astroavyug.com/#services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Numerology",
-          "item": "https://astroavyug.com/services/numerology.html"
-        }
-      ]
-    }
-  ]
+<meta property="og:site_name" content="Astro Avyug">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Numerology Consultation | Astro Avyug">
+<meta name="twitter:description" content="Traditional Numerology guidance for personality, career, relationships and personal cycles.">
+
+<style>
+:root{
+  --bg:#05040b;
+  --bg2:#11091f;
+  --gold:#e9bf68;
+  --gold2:#fff0b8;
+  --purple:#925bd6;
+  --purple2:#b989ed;
+  --blue:#456fd0;
+  --pink:#d66fae;
+  --white:#fff;
+  --muted:#d8d0e4;
+  --line:rgba(233,191,104,.22);
+  --shadow:0 25px 70px rgba(0,0,0,.48);
 }
-</script>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(circle at 10% 10%,rgba(130,70,200,.30),transparent 27%),
+    radial-gradient(circle at 90% 12%,rgba(55,90,190,.25),transparent 28%),
+    radial-gradient(circle at 50% 50%,rgba(233,191,104,.06),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(180,60,130,.20),transparent 35%),
+    linear-gradient(135deg,#030208,#0b0615,#12091f,#05040b);
+}
+
+/* MOVING STAR FIELD */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-3;
+  opacity:.55;
+
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.75) 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(233,191,104,.55) 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(185,137,237,.45) 1px,transparent 1.5px);
+
+  background-size:150px 150px,220px 220px,310px 310px;
+  background-position:0 0,50px 90px,120px 30px;
+
+  animation:starsMove 30s linear infinite;
+}
+
+@keyframes starsMove{
+  from{background-position:0 0,50px 90px,120px 30px}
+  to{background-position:150px 150px,270px 310px,430px 280px}
+}
+
+/* FLOATING PARTICLES */
+.particle{
+  position:fixed;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 16px var(--gold);
+  opacity:.55;
+  pointer-events:none;
+  z-index:-1;
+  animation:particleFloat 9s ease-in-out infinite;
+}
+
+.p1{left:8%;top:30%;animation-delay:0s}
+.p2{left:18%;top:72%;animation-delay:2s}
+.p3{left:38%;top:18%;animation-delay:4s}
+.p4{left:63%;top:74%;animation-delay:1s}
+.p5{left:78%;top:25%;animation-delay:3s}
+.p6{left:92%;top:62%;animation-delay:5s}
+
+@keyframes particleFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+    opacity:.35;
+  }
+  50%{
+    transform:translateY(-35px) scale(1.6);
+    opacity:.85;
+  }
+}
+
+/* NAV */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+
+  padding:14px 6%;
+
+  background:rgba(5,4,11,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(233,191,104,.16);
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+
+.brand{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.5px;
+
+  background:linear-gradient(90deg,var(--gold),#fff,var(--purple2),var(--gold));
+  background-size:300% auto;
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  animation:brandGlow 5s linear infinite;
+}
+
+@keyframes brandGlow{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:#eee;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+
+  padding:9px 14px;
+  border-radius:30px;
+
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:#000;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  box-shadow:0 0 22px rgba(233,191,104,.35);
+  transform:translateY(-2px);
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  max-width:1200px;
+  margin:auto;
+  padding:90px 6% 70px;
+  text-align:center;
+}
+
+.orbit{
+  position:absolute;
+  left:50%;
+  top:70px;
+  transform:translateX(-50%);
+
+  width:280px;
+  height:280px;
+
+  border:1px solid rgba(233,191,104,.16);
+  border-radius:50%;
+
+  box-shadow:
+    0 0 80px rgba(146,91,214,.10),
+    inset 0 0 60px rgba(233,191,104,.04);
+
+  animation:orbitSpin 18s linear infinite;
+  pointer-events:none;
+}
+
+.orbit::before,
+.orbit::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+
+.orbit::before{
+  width:13px;
+  height:13px;
+  top:-6px;
+  left:50%;
+
+  background:var(--gold2);
+  box-shadow:
+    0 0 15px var(--gold),
+    0 0 35px var(--gold);
+
+  transform:translateX(-50%);
+}
+
+.orbit::after{
+  width:8px;
+  height:8px;
+  right:16px;
+  bottom:35px;
+
+  background:var(--purple2);
+  box-shadow:0 0 18px var(--purple2);
+}
+
+@keyframes orbitSpin{
+  from{transform:translateX(-50%) rotate(0deg)}
+  to{transform:translateX(-50%) rotate(360deg)}
+}
+
+.number-symbol{
+  position:relative;
+  z-index:2;
+
+  width:100px;
+  height:100px;
+
+  margin:0 auto 28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  font-size:48px;
+  font-weight:900;
+
+  color:var(--gold2);
+
+  background:
+    radial-gradient(circle at 35% 30%,rgba(255,255,255,.25),transparent 20%),
+    radial-gradient(circle,rgba(233,191,104,.17),rgba(70,30,110,.25));
+
+  border:1px solid rgba(233,191,104,.55);
+
+  box-shadow:
+    0 0 35px rgba(233,191,104,.20),
+    inset 0 0 35px rgba(233,191,104,.12);
+
+  animation:numberFloat 4s ease-in-out infinite;
+}
+
+@keyframes numberFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    transform:translateY(-10px) scale(1.04);
+  }
+}
+
+.eyebrow{
+  position:relative;
+  z-index:2;
+
+  display:inline-block;
+
+  margin-bottom:20px;
+  padding:8px 18px;
+
+  border:1px solid rgba(233,191,104,.28);
+  border-radius:40px;
+
+  color:var(--gold2);
+  background:rgba(233,191,104,.05);
+
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+
+  box-shadow:0 0 25px rgba(233,191,104,.08);
+}
+
+.main-title{
+  position:relative;
+  z-index:2;
+
+  font-size:clamp(48px,8vw,96px);
+  line-height:1;
+
+  font-weight:1000;
+  letter-spacing:-4px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      var(--gold2) 25%,
+      var(--gold) 52%,
+      #9b6b2b 75%,
+      #fff1bd
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  text-shadow:
+    0 2px 0 #8c652e,
+    0 4px 0 #684820,
+    0 8px 18px rgba(0,0,0,.85),
+    0 0 28px rgba(233,191,104,.22);
+
+  animation:
+    titleAppear 1.2s ease both,
+    titleFloat 5s ease-in-out 1.2s infinite;
+}
+
+@keyframes titleAppear{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.92);
+    filter:blur(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+@keyframes titleFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+
+.subtitle{
+  position:relative;
+  z-index:2;
+
+  margin:22px auto 10px;
+  max-width:850px;
+
+  font-size:clamp(18px,3vw,27px);
+  font-weight:800;
+
+  color:#f8edf9;
+
+  text-shadow:0 0 18px rgba(185,137,237,.22);
+}
+
+.hero-description{
+  position:relative;
+  z-index:2;
+
+  max-width:760px;
+  margin:15px auto 30px;
+
+  color:var(--muted);
+  line-height:1.8;
+  font-size:16px;
+}
+
+/* BUTTONS */
+.actions{
+  position:relative;
+  z-index:5;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+
+  margin-top:28px;
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:145px;
+
+  padding:13px 21px;
+
+  border-radius:40px;
+
+  text-decoration:none;
+  font-weight:900;
+  font-size:14px;
+
+  color:#08060b;
+
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+
+  box-shadow:
+    0 10px 30px rgba(233,191,104,.18),
+    inset 0 1px 0 rgba(255,255,255,.65);
+
+  transition:.35s;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+
+  transform:skewX(-25deg);
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.8),
+    transparent
+  );
+
+  transition:.6s;
+}
+
+.btn:hover::before{
+  left:130%;
+}
+
+.btn:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:
+    0 15px 40px rgba(233,191,104,.35),
+    0 0 30px rgba(233,191,104,.15);
+}
+
+.btn.secondary{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(146,91,214,.55),
+      rgba(69,111,208,.42)
+    );
+
+  border:1px solid rgba(233,191,104,.25);
+}
+
+/* CONTENT */
+.container{
+  width:min(1100px,90%);
+  margin:auto;
+}
+
+.content-card{
+  position:relative;
+  overflow:hidden;
+
+  margin:25px 0;
+
+  padding:35px;
+
+  border:1px solid var(--line);
+  border-radius:28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.025)
+    );
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  box-shadow:var(--shadow);
+
+  animation:cardReveal .9s ease both;
+}
+
+.content-card::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-100px;
+  top:-100px;
+
+  border-radius:50%;
+
+  background:rgba(146,91,214,.18);
+  filter:blur(30px);
+}
+
+.content-card:hover{
+  border-color:rgba(233,191,104,.42);
+  transform:translateY(-3px);
+  transition:.35s;
+}
+
+@keyframes cardReveal{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.section-title{
+  margin-bottom:18px;
+
+  color:var(--gold2);
+
+  font-size:28px;
+  font-weight:900;
+
+  text-shadow:0 0 20px rgba(233,191,104,.12);
+}
+
+.content-card p{
+  color:var(--muted);
+  line-height:1.85;
+  margin-bottom:13px;
+}
+
+.content-card strong{
+  color:#fff1c7;
+}
+
+/* TOPIC GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+
+  margin:22px 0;
+}
+
+.topic{
+  position:relative;
+  min-height:180px;
+
+  padding:25px;
+
+  border-radius:24px;
+
+  border:1px solid rgba(233,191,104,.17);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(146,91,214,.16),
+      rgba(69,111,208,.08),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+  transition:.4s;
+  transform-style:preserve-3d;
+}
+
+.topic:hover{
+  transform:
+    translateY(-9px)
+    perspective(700px)
+    rotateX(3deg)
+    rotateY(-3deg);
+
+  border-color:rgba(233,191,104,.45);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.45),
+    0 0 35px rgba(146,91,214,.12);
+}
+
+.icon{
+  width:52px;
+  height:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:15px;
+
+  border-radius:16px;
+
+  font-size:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(233,191,104,.22),
+      rgba(146,91,214,.18)
+    );
+
+  border:1px solid rgba(233,191,104,.25);
+
+  box-shadow:0 0 25px rgba(233,191,104,.08);
+
+  animation:iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+.topic h3{
+  color:#fff;
+  margin-bottom:9px;
+  font-size:18px;
+}
+
+.topic p{
+  font-size:14px;
+  line-height:1.7;
+  margin:0;
+}
+
+/* STEPS */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.step{
+  padding:23px 18px;
+
+  border-radius:22px;
+
+  text-align:center;
+
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(233,191,104,.16);
+
+  transition:.35s;
+}
+
+.step:hover{
+  transform:translateY(-7px);
+  background:rgba(233,191,104,.07);
+  border-color:rgba(233,191,104,.42);
+}
+
+.step-number{
+  width:45px;
+  height:45px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin:0 auto 14px;
+
+  border-radius:50%;
+
+  color:#100b13;
+  font-weight:1000;
+
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+
+  box-shadow:0 0 22px rgba(233,191,104,.18);
+}
+
+.step h3{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.step p{
+  font-size:13px;
+  margin:0;
+}
+
+/* NUMBER SHOWCASE */
+.number-showcase{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+
+  margin:30px 0;
+}
+
+.number-box{
+  width:75px;
+  height:75px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:22px;
+
+  font-size:30px;
+  font-weight:1000;
+
+  color:var(--gold2);
+
+  border:1px solid rgba(233,191,104,.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(233,191,104,.12),
+      rgba(146,91,214,.13)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25),
+    0 0 25px rgba(233,191,104,.08);
+
+  animation:numberBoxFloat 4s ease-in-out infinite;
+}
+
+.number-box:nth-child(2){animation-delay:.3s}
+.number-box:nth-child(3){animation-delay:.6s}
+.number-box:nth-child(4){animation-delay:.9s}
+.number-box:nth-child(5){animation-delay:1.2s}
+.number-box:nth-child(6){animation-delay:1.5s}
+.number-box:nth-child(7){animation-delay:1.8s}
+.number-box:nth-child(8){animation-delay:2.1s}
+.number-box:nth-child(9){animation-delay:2.4s}
+
+@keyframes numberBoxFloat{
+  0%,100%{transform:translateY(0) rotateY(0)}
+  50%{transform:translateY(-8px) rotateY(10deg)}
+}
+
+/* NOTE */
+.note{
+  margin-top:22px;
+  padding:20px 22px;
+
+  border-left:3px solid var(--gold);
+
+  border-radius:0 18px 18px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233,191,104,.08),
+      rgba(146,91,214,.04)
+    );
+
+  color:#e9dfed;
+
+  line-height:1.75;
+}
+
+/* RELATED */
+.related-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.related{
+  display:block;
+
+  padding:18px;
+
+  border-radius:20px;
+
+  text-decoration:none;
+
+  color:#fff;
+
+  border:1px solid rgba(233,191,104,.16);
+
+  background:rgba(255,255,255,.035);
+
+  transition:.35s;
+}
+
+.related:hover{
+  transform:translateY(-6px);
+  border-color:rgba(233,191,104,.45);
+  box-shadow:0 15px 35px rgba(0,0,0,.30);
+}
+
+.related strong{
+  display:block;
+  color:var(--gold2);
+  margin-bottom:5px;
+}
+
+.related span{
+  color:#cfc5d8;
+  font-size:13px;
+}
+
+/* CTA */
+.cta{
+  position:relative;
+  overflow:hidden;
+
+  margin:35px 0 55px;
+  padding:45px 30px;
+
+  text-align:center;
+
+  border-radius:30px;
+
+  border:1px solid rgba(233,191,104,.28);
+
+  background:
+    radial-gradient(circle at 20% 50%,rgba(146,91,214,.25),transparent 30%),
+    radial-gradient(circle at 80% 50%,rgba(69,111,208,.22),transparent 30%),
+    linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+
+  box-shadow:var(--shadow);
+}
+
+.cta::before{
+  content:"✦     1     2     3     4     5     6     7     8     9     ✦";
+
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  top:12px;
+
+  color:rgba(233,191,104,.13);
+  font-size:17px;
+  letter-spacing:15px;
+
+  white-space:nowrap;
+
+  animation:ctaNumbers 15s linear infinite;
+}
+
+@keyframes ctaNumbers{
+  from{transform:translateX(-5%)}
+  to{transform:translateX(5%)}
+}
+
+.cta h2{
+  position:relative;
+  z-index:2;
+
+  margin-bottom:12px;
+
+  font-size:clamp(27px,4vw,43px);
+
+  color:var(--gold2);
+
+  text-shadow:0 0 25px rgba(233,191,104,.15);
+}
+
+.cta p{
+  position:relative;
+  z-index:2;
+
+  max-width:700px;
+  margin:0 auto 24px;
+
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* WHATSAPP */
+.floating-wa{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:999;
+
+  width:62px;
+  height:62px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  text-decoration:none;
+
+  font-size:29px;
+
+  background:#25D366;
+  color:white;
+
+  box-shadow:
+    0 0 0 0 rgba(37,211,102,.45),
+    0 12px 35px rgba(0,0,0,.45);
+
+  animation:waPulse 2.2s infinite;
+}
+
+@keyframes waPulse{
+  0%{
+    box-shadow:
+      0 0 0 0 rgba(37,211,102,.45),
+      0 12px 35px rgba(0,0,0,.45);
+  }
+
+  70%{
+    box-shadow:
+      0 0 0 18px rgba(37,211,102,0),
+      0 12px 35px rgba(0,0,0,.45);
+  }
+
+  100%{
+    box-shadow:
+      0 0 0 0 rgba(37,211,102,0),
+      0 12px 35px rgba(0,0,0,.45);
+  }
+}
+
+/* FOOTER */
+footer{
+  padding:30px 20px 45px;
+
+  text-align:center;
+
+  border-top:1px solid rgba(233,191,104,.13);
+
+  background:rgba(0,0,0,.25);
+}
+
+.footer-brand{
+  margin-bottom:8px;
+
+  font-size:22px;
+  font-weight:1000;
+
+  color:var(--gold2);
+}
+
+footer p{
+  color:#aaa0b0;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+
+  margin-top:15px;
+}
+
+.footer-links a{
+  color:#d8c8e6;
+  text-decoration:none;
+  font-size:13px;
+}
+
+.footer-links a:hover{
+  color:var(--gold2);
+}
+
+/* MOBILE */
+@media(max-width:850px){
+
+  .nav{
+    padding:12px 4%;
+  }
+
+  .brand{
+    font-size:18px;
+  }
+
+  .nav-links{
+    gap:4px;
+  }
+
+  .nav-links a{
+    padding:7px 9px;
+    font-size:11px;
+  }
+
+  .hero{
+    padding:75px 5% 50px;
+  }
+
+  .orbit{
+    width:230px;
+    height:230px;
+    top:70px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .related-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px){
+
+  .nav{
+    position:relative;
+
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .nav-links{
+    justify-content:center;
+  }
+
+  .nav-links a{
+    padding:7px 8px;
+  }
+
+  .hero{
+    padding-top:60px;
+  }
+
+  .orbit{
+    width:205px;
+    height:205px;
+  }
+
+  .number-symbol{
+    width:84px;
+    height:84px;
+    font-size:40px;
+  }
+
+  .main-title{
+    font-size:54px;
+    letter-spacing:-2px;
+  }
+
+  .subtitle{
+    font-size:18px;
+  }
+
+  .hero-description{
+    font-size:14px;
+  }
+
+  .content-card{
+    padding:23px 18px;
+    border-radius:22px;
+  }
+
+  .section-title{
+    font-size:24px;
+  }
+
+  .grid,
+  .steps,
+  .related-grid{
+    grid-template-columns:1fr;
+  }
+
+  .number-box{
+    width:62px;
+    height:62px;
+    font-size:25px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+    max-width:300px;
+  }
+
+  .floating-wa{
+    width:56px;
+    height:56px;
+    right:15px;
+    bottom:15px;
+  }
+}
+</style>
 </head>
+
 <body>
-<main>
-<h1>Numerology</h1>
-<p>Personalized numerology guidance based on relevant names, dates and numbers.</p>
-<p>Astro Avyug provides astrology and spiritual guidance through online consultation.</p>
-<p><a href="/">Astro Avyug Home</a> · <a href="/blog/">Blog</a> · <a href="/about-astro-avyug.html">About</a></p>
-</main>
-</body>
-</html>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+<!-- NAV -->
+<nav class="nav">
+
+  <div class="brand">
+    ✦ ASTRO AVYUG
+  </div>
+
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about-astro-avyug.html">About</a>
+    <a href="vedic-astrology.html">Vedic</a>
+    <a href="kundli-analysis.html">Kundli</a>
+    <a href="kundli-matching.html">Matching</a>
+    <a href="career-guidance.html">Career</a>
+    <a href="marriage-guidance.html">Marriage</a>
+    <a href="tarot-reading.html">Tarot</a>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+
+  <div class="orbit"></div>
+
+  <div class="number-symbol">
+    9
+  </div>
+
+  <div class="eyebrow">
+    ✦ NUMBERS • VIBRATION • PERSONALITY • GUIDANCE ✦
+  </div>
+
+  <h1 class="main-title">
+    Numerology
+  </h1>
+
+  <div class="subtitle">
+    Life Path · Name · Personal Numbers · Cycles
+  </div>
+
+  <p class="hero-description">
+    Explore the traditional language of numbers to understand
+    personality patterns, life themes, personal cycles and areas
+    where you may seek greater clarity.
+  </p>
+
+  <div class="actions">
+
+    <a
+      class="btn"
+      href="h
