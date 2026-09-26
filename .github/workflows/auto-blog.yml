@@ -1,4 +1,4 @@
-name: Astro Avyug - Automatic AI Blog
+name: Astro Avyug - Automatic AI Blog EN + HI
 
 on:
   schedule:
@@ -13,54 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      # ------------------------------------------------
-      # Checkout repository
-      # ------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ------------------------------------------------
-      # Setup Python
-      # ------------------------------------------------
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      # ------------------------------------------------
-      # Generate Blog
-      # ------------------------------------------------
-      - name: Generate blog
+      - name: Generate Hindi and English blogs
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/auto_blog.py
+          python scripts/auto_blog_multilang.py
 
-      # ------------------------------------------------
-      # Commit and Push
-      # ------------------------------------------------
       - name: Commit and push
         run: |
           git config user.name "Astro Avyug Blog Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add blog/ sitemap.xml
+          git add blog/ en/blog/ hi/blog/ sitemap.xml
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git commit -m "Publish new Astro Avyug AI blog"
+          git commit -m "Publish Astro Avyug Hindi and English AI blogs"
 
-          # Get latest changes from main
           git fetch origin main
-
-          # Rebase generated changes on latest main
           git rebase origin/main
-
-          # Push latest rebased commit
           git push origin HEAD:main
