@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" lang="hi-IN">
+<html lang="hi-IN">
 <head>
   <link rel="icon" href="/favicon.ico" sizes="any">
 <!-- Google tag (gtag.js) -->
@@ -306,7 +306,7 @@ h1, h2, h3 {
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Astro Avyug">
-<meta property="og:locale" content="en_IN">
+<meta property="og:locale" content="hi_IN">
 <meta property="og:title" content="Astro Avyug | Vedic Astrology, Kundli, Tarot & Numerology">
 <meta property="og:description" content="Astro Avyug — Vedic Astrology, Kundli Analysis & Matching, Tarot Reading, Numerology, relationship, marriage and career guidance.">
 <meta property="og:url" content="https://astroavyug.com/hi/blog/">
@@ -359,7 +359,7 @@ h1, h2, h3 {
       "description":"Astrology articles and guidance covering Vedic Astrology, Kundli Matching, Tarot, Numerology, relationships and career.",
       "isPartOf":{"@id":"https://astroavyug.com/#website"},
       "about":{"@id":"https://astroavyug.com/#organization"},
-      "inLanguage":"en-IN"
+      "inLanguage":"hi-IN"
     },
     {
       "@type":"BreadcrumbList",
@@ -388,13 +388,23 @@ h1, h2, h3 {
 <meta name="theme-color" content="#0b1020">
 <meta name="application-name" content="Astro Avyug Blog">
 <meta name="apple-mobile-web-app-title" content="Astro Avyug Blog">
-<link rel="alternate" type="application/rss+xml" title="Astro Avyug Blog RSS" href="/feed.xml">
-
-
 <link rel="canonical" href="https://astroavyug.com/hi/blog/">
 <link rel="alternate" hreflang="en" href="https://astroavyug.com/en/blog/">
 <link rel="alternate" hreflang="hi" href="https://astroavyug.com/hi/blog/">
 <link rel="alternate" hreflang="x-default" href="https://astroavyug.com/blog/">
+<link rel="alternate" type="application/rss+xml" title="Astro Avyug Blog RSS" href="/feed.xml">
+
+
+<style id="astro-avyug-blog-layout-fix">
+/* Blog page: match the Home page's visual order — headline first, contact number below. */
+.aa-brand-headline{margin-top:4px !important;margin-bottom:6px !important;min-height:110px !important;padding:12px 10px !important}
+.aa-title{font-size:clamp(34px,5.5vw,64px) !important}
+.aa-sub{margin-top:5px !important}
+.top-contact{padding:5px 0 !important}
+.top-contact-inner{gap:12px !important;font-size:12px !important}
+.hero{padding-top:38px !important;padding-bottom:28px !important}
+footer{margin-top:18px !important;padding-top:16px !important;padding-bottom:16px !important}
+</style>
 
 
 <script>
@@ -489,19 +499,412 @@ h1, h2, h3 {
 
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="dns-prefetch" href="//www.googletagmanager.com">
+
+<style id="astro-avyug-blog-slider">
+/* Horizontal blog timeline: newest post stays first, older posts slide to the right. */
+.blog-slider-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:26px 0 8px}
+.blog-slider-hint{display:flex;flex-direction:column;gap:4px;color:#cfc6d9;font-size:13px}
+.blog-slider-hint strong{color:#ffe5a1;font-size:15px;letter-spacing:.02em}
+.blog-slider-controls{display:flex;gap:10px;flex:none}
+.blog-slide-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,229,161,.35);background:linear-gradient(145deg,rgba(41,26,72,.96),rgba(11,14,35,.96));color:#ffe5a1;font-size:30px;line-height:1;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.28);transition:transform .2s ease,border-color .2s ease,opacity .2s ease}
+.blog-slide-btn:hover{transform:translateY(-2px);border-color:rgba(255,229,161,.7)}
+.blog-slide-btn:disabled{opacity:.35;cursor:default;transform:none}
+#grid.blog-grid{display:flex!important;grid-template-columns:none!important;gap:20px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;padding:10px 4px 22px;margin-left:0;margin-right:0;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(233,191,104,.55) transparent}
+#grid.blog-grid::-webkit-scrollbar{height:7px}
+#grid.blog-grid::-webkit-scrollbar-track{background:transparent}
+#grid.blog-grid::-webkit-scrollbar-thumb{background:rgba(233,191,104,.5);border-radius:999px}
+#grid .blog-card{position:relative;flex:0 0 min(540px,82vw);max-width:540px;scroll-snap-align:start;scroll-snap-stop:always;min-height:100%;box-sizing:border-box}
+#grid .blog-card:first-child{border-color:rgba(255,210,122,.68);box-shadow:0 18px 50px rgba(233,191,104,.13),0 18px 45px rgba(0,0,0,.24)}
+#grid .blog-card:first-child::before{content:"LATEST";position:absolute;z-index:4;top:12px;right:12px;padding:6px 10px;border-radius:999px;background:rgba(10,9,30,.88);border:1px solid rgba(255,229,161,.48);color:#ffe5a1;font-size:10px;font-weight:900;letter-spacing:.12em;backdrop-filter:blur(10px)}
+@media(max-width:720px){
+  .blog-slider-head{align-items:flex-end;margin-top:22px}
+  .blog-slider-hint span{font-size:11px}
+  .blog-slide-btn{width:42px;height:42px;font-size:27px}
+  #grid.blog-grid{gap:14px;padding-right:9vw}
+  #grid .blog-card{flex-basis:88vw;max-width:88vw}
+}
+
+/* Only automatically generated posts live in #grid and slide horizontally.
+   The six original/manual cards remain in the normal grid below. */
+.fixed-blog-grid{
+  margin-top:28px;
+  gap:16px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.fixed-blog-grid .blog-card{
+  position:relative;
+  overflow:hidden;
+  padding:17px;
+  border-radius:18px;
+  min-height:0;
+  transform:translateZ(0);
+  animation:fixedCardHello .58s cubic-bezier(.2,.8,.2,1) both;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.fixed-blog-grid .blog-card:nth-child(2){animation-delay:.05s}
+.fixed-blog-grid .blog-card:nth-child(3){animation-delay:.10s}
+.fixed-blog-grid .blog-card:nth-child(4){animation-delay:.15s}
+.fixed-blog-grid .blog-card:nth-child(5){animation-delay:.20s}
+.fixed-blog-grid .blog-card:nth-child(6){animation-delay:.25s}
+.fixed-blog-grid .blog-card::after{
+  content:"✦";
+  position:absolute;
+  top:10px;
+  right:12px;
+  color:rgba(255,229,161,.62);
+  font-size:15px;
+  pointer-events:none;
+  opacity:.55;
+  animation:fixedSparkle 2.8s ease-in-out infinite;
+}
+.fixed-blog-grid .blog-card:hover{
+  transform:translateY(-6px) rotate(.35deg);
+  border-color:rgba(255,210,122,.62);
+  box-shadow:0 16px 34px rgba(0,0,0,.30),0 0 22px rgba(233,191,104,.10);
+}
+.fixed-blog-grid .article-image{height:150px;margin:0 0 12px;border-radius:13px}
+.fixed-blog-grid .blog-icon{font-size:25px;margin-bottom:4px;transform-origin:center;animation:fixedIconWiggle 4s ease-in-out infinite}
+.fixed-blog-grid .tag{font-size:9px;letter-spacing:1px}
+.fixed-blog-grid .blog-card h3{font-size:17px;line-height:1.3;margin:6px 0 7px}
+.fixed-blog-grid .blog-card p{font-size:12.5px;line-height:1.5;margin:0 0 11px}
+.fixed-blog-grid .blog-card .article{font-size:12.5px;line-height:1.62;margin-top:10px;padding-top:10px}
+.fixed-blog-grid .read{font-size:12px}
+@keyframes fixedCardHello{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fixedSparkle{0%,100%{transform:scale(.85) rotate(0deg);opacity:.32}50%{transform:scale(1.22) rotate(14deg);opacity:.9}}
+@keyframes fixedIconWiggle{0%,88%,100%{transform:rotate(0deg) scale(1)}92%{transform:rotate(-7deg) scale(1.08)}96%{transform:rotate(7deg) scale(1.08)}}
+@media(max-width:980px){
+  .fixed-blog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+}
+@media(max-width:720px){
+  .fixed-blog-grid{margin-top:22px;grid-template-columns:1fr;gap:12px;padding:0 4px}
+  .fixed-blog-grid .blog-card{padding:14px;border-radius:16px}
+  .fixed-blog-grid .article-image{height:132px!important;border-radius:12px;margin-bottom:10px}
+  .fixed-blog-grid .blog-icon{font-size:22px}
+  .fixed-blog-grid .blog-card h3{font-size:15px!important;line-height:1.28;margin:5px 0 6px}
+  .fixed-blog-grid .blog-card p{font-size:11.5px!important;line-height:1.48;margin-bottom:9px}
+  .fixed-blog-grid .blog-card .article{font-size:11.5px!important;line-height:1.58}
+  .fixed-blog-grid .read{font-size:11.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fixed-blog-grid .blog-card,.fixed-blog-grid .blog-card::after,.fixed-blog-grid .blog-icon{animation:none!important}
+  .fixed-blog-grid .blog-card:hover{transform:none}
+}
+
+</style>
+
+<style id="astro-avyug-mobile-compact">
+/* Compact typography/layout to match the Home page feel, especially on phones. */
+.blog-card h3{font-size:20px;line-height:1.3}
+.blog-card p{font-size:15px;line-height:1.6}
+.blog-card .article{font-size:15px;line-height:1.7}
+
+@media(max-width:720px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .aa-brand-headline{min-height:108px;margin:8px auto 10px;padding:15px 10px;border-radius:18px}
+  .aa-title{font-size:31px!important;line-height:1.05;letter-spacing:.6px!important}
+  .aa-title:after{width:105px;margin-top:9px}
+  .aa-sub{font-size:11px;line-height:1.4;margin-top:6px;letter-spacing:.35px}
+
+  .hero{padding:38px 0 30px}
+  .kicker{font-size:10px;letter-spacing:2px}
+  .hero h1{font-size:32px!important;line-height:1.08;margin:10px 0 12px}
+  .hero p{font-size:14px;line-height:1.58;max-width:94%}
+  .hero-actions{margin-top:18px;gap:9px}
+  .hero-actions .btn{padding:10px 15px;font-size:12px}
+  .cosmic-orbit{width:min(270px,72vw);margin-top:28px}
+
+  section{padding:44px 0}
+  .sectionhead{margin-bottom:20px}
+  .eyebrow{font-size:10px;letter-spacing:1.5px}
+  .title{font-size:27px!important;line-height:1.15;margin:6px 0}
+  .sub{font-size:13px;line-height:1.58;padding:0 4px}
+  .tools{margin:18px auto 22px;gap:8px}
+  .search{font-size:13px;padding:11px 14px;width:100%}
+  .filter{font-size:11px;padding:7px 10px}
+
+  .blog-slider-head{margin:18px 0 5px;gap:10px}
+  .blog-slider-hint{font-size:11px;gap:2px;min-width:0}
+  .blog-slider-hint strong{font-size:12px}
+  .blog-slider-hint span{font-size:10px;line-height:1.35}
+  .blog-slide-btn{width:36px;height:36px;font-size:23px}
+  #grid.blog-grid{gap:12px;padding:7px 6vw 15px 1px}
+  #grid .blog-card{flex-basis:82vw;max-width:82vw;padding:15px;border-radius:18px}
+  #grid .blog-card:first-child::before{top:9px;right:9px;padding:4px 7px;font-size:8px}
+  .article-image{height:140px!important;border-radius:13px;margin:0 0 12px}
+  .blog-icon{font-size:25px;margin-bottom:5px}
+  .tag{font-size:9px;letter-spacing:1px}
+  .blog-card h3{font-size:17px!important;line-height:1.32;margin:6px 0 7px}
+  .blog-card p{font-size:12.5px!important;line-height:1.55;margin:0 0 11px}
+  .blog-card .article{font-size:12.5px!important;line-height:1.62;margin-top:10px;padding-top:10px}
+  .read{font-size:12px}
+
+  .cta{margin-top:28px;padding:23px 16px;border-radius:19px}
+  .cta h2{font-size:22px}
+  .cta p{font-size:13px;line-height:1.55}
+  footer{font-size:11px;padding:22px 0 76px}
+}
+
+@media(max-width:390px){
+  .aa-title{font-size:28px!important}
+  .hero h1{font-size:29px!important}
+  .title{font-size:25px!important}
+  #grid .blog-card{flex-basis:84vw;max-width:84vw}
+  .blog-card h3{font-size:16.5px!important}
+}
+</style>
+
+
+<style id="blog-homepage-match-v3">
+/* Visual alignment with Astro Avyug Home page. No change to auto-blog insertion logic. */
+.blog-home-nav{position:sticky;top:0;z-index:80;background:rgba(11,7,17,.91);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.blog-home-nav .navin{min-height:68px;height:auto;display:flex;align-items:center;gap:18px;justify-content:space-between}
+.blog-home-nav .brand{font-weight:900;font-size:18px;color:#ffe2a0;white-space:nowrap}
+.blog-home-nav .links{display:flex;align-items:center;gap:18px;color:#ddd;font-size:13px}
+.blog-home-nav .links a{padding:8px 0}
+.blog-home-nav .links a:hover,.blog-home-nav .links a[aria-current="page"]{color:#ffe2a0}
+.blog-home-nav .wa{background:#25d366;color:#061108;padding:10px 15px;border-radius:25px;font-weight:800;font-size:12px;white-space:nowrap}
+
+/* Home-like page rhythm */
+main{overflow:hidden}
+.hero{min-height:auto!important;padding:48px 0 42px!important;background:radial-gradient(circle at 20% 40%,rgba(0,196,255,.10),transparent 25%),radial-gradient(circle at 80% 35%,rgba(213,58,255,.12),transparent 28%)!important}
+.hero .wrap{max-width:980px}
+.hero h1{font-size:clamp(34px,6vw,58px)!important;line-height:1.05!important;margin:14px auto 12px!important}
+.hero p{max-width:720px;font-size:15px!important;line-height:1.65!important;color:#d0c9d7}
+.hero-actions{margin-top:22px!important}
+.hero-actions .btn{padding:11px 18px!important;font-size:13px!important}
+#articles{padding-top:52px!important;padding-bottom:54px!important}
+.sectionhead{max-width:760px;margin:0 auto 24px!important}
+.sectionhead .title{font-size:clamp(27px,4vw,38px)!important;margin:8px 0!important}
+.sectionhead .sub{font-size:14px!important;line-height:1.65!important}
+
+/* Automatic blog slider — keeps the exact #grid marker used by auto_blog.py */
+.blog-slider-head{max-width:100%;margin-top:20px!important;padding:0 2px}
+.blog-slider-hint strong{font-size:14px!important}
+.blog-slider-hint span{font-size:11px!important;line-height:1.4}
+#grid .blog-card{border-radius:22px!important;padding:18px!important;background:linear-gradient(145deg,rgba(35,20,55,.88),rgba(8,12,30,.90))!important}
+#grid .blog-card h3{font-size:18px!important;line-height:1.35!important}
+#grid .blog-card p{font-size:13px!important;line-height:1.58!important}
+#grid .blog-card img{height:180px!important;border-radius:14px!important;margin-bottom:13px!important}
+
+/* Separate section for the six manual/fixed cards */
+.fixed-section-head{text-align:center;max-width:720px;margin:48px auto 18px;padding:0 8px}
+.fixed-section-head .eyebrow{font-size:10px;letter-spacing:2px;color:#e7bd6b;font-weight:800}
+.fixed-section-head h2{font-family:Georgia,serif;font-size:30px!important;line-height:1.15;margin:8px 0 9px!important;color:#ffe2a0}
+.fixed-section-head p{margin:0 auto;color:#c5bfd1;font-size:13px;line-height:1.6;max-width:620px}
+.fixed-blog-grid{margin-top:18px!important;gap:15px!important}
+.fixed-blog-grid .blog-card{background:linear-gradient(145deg,rgba(35,20,55,.86),rgba(8,12,30,.9))!important;border:1px solid #4a3b63!important;box-shadow:0 14px 34px rgba(0,0,0,.28)!important}
+.fixed-blog-grid .article-image{height:145px!important}
+.fixed-blog-grid .blog-card h3{font-size:16px!important;line-height:1.32!important}
+.fixed-blog-grid .blog-card p{font-size:12px!important;line-height:1.55!important;color:#c5bfd1!important}
+.fixed-blog-grid .read{margin-top:9px!important}
+.fixed-blog-grid .read button{display:inline-flex;align-items:center;min-height:34px;padding:7px 12px!important;border-radius:18px!important;background:rgba(255,226,160,.08)!important;border:1px solid rgba(255,226,160,.22)!important;color:#ffe2a0!important;font-weight:800!important}
+
+/* Expanded text: readable paragraphs instead of one awkward block */
+.fixed-blog-grid .article{display:none!important;white-space:pre-line!important;margin:12px 0 0!important;padding:13px 14px!important;border-radius:14px!important;background:rgba(8,10,25,.64)!important;border:1px solid rgba(255,255,255,.09)!important;color:#d7d0df!important;font-size:12px!important;line-height:1.72!important;text-align:left!important;letter-spacing:0!important;transform:none!important;-webkit-text-fill-color:initial!important}
+.fixed-blog-grid .article.open{display:block!important;animation:articleReveal .28s ease both}
+@keyframes articleReveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+/* Home-like footer; replaces loose SEO text at the bottom */
+.home-like-footer{margin-top:20px!important;padding:26px 0 86px!important;background:rgba(5,7,20,.36);border-top:1px solid rgba(255,255,255,.08);text-align:center}
+.footer-brand{font-family:Georgia,serif;color:#ffe2a0;font-size:20px;font-weight:700;margin-bottom:8px}
+.footer-services{max-width:800px;margin:0 auto;color:#aaa2b7;font-size:11.5px;line-height:1.7}
+.footer-links{margin-top:11px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#e5d7aa}
+.footer-links a:hover{color:#fff0bd}
+.footer-copy{margin-top:10px;color:#81798e;font-size:10.5px}
+
+@media(max-width:820px){
+  .blog-home-nav .navin{position:relative;min-height:64px;gap:8px}
+  .blog-home-nav .mobile-menu-toggle{display:flex!important;order:1;width:40px;height:40px;margin:0!important;font-size:24px}
+  .blog-home-nav .brand{order:2;font-size:14px;flex:1}
+  .blog-home-nav .wa{display:none}
+  .blog-home-nav .links{display:none;position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:99;flex-direction:column;align-items:stretch;gap:2px;background:rgba(10,7,18,.98);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:9px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .blog-home-nav .links.open{display:flex}
+  .blog-home-nav .links a{padding:11px 13px;border-radius:9px;font-size:13px}
+  .blog-home-nav .links a:hover{background:rgba(255,215,130,.08)}
+  .hero{padding:34px 0 30px!important}
+  #articles{padding-top:40px!important;padding-bottom:44px!important}
+  .fixed-section-head{margin-top:38px}
+}
+
+@media(max-width:720px){
+  .wrap{padding-left:15px!important;padding-right:15px!important}
+  .aa-brand-headline{min-height:92px!important;padding:11px 8px!important;margin:6px auto!important}
+  .aa-title{font-size:28px!important}
+  .aa-sub{font-size:10px!important;line-height:1.45!important}
+  .top-contact-inner{font-size:10.5px!important;gap:8px!important;justify-content:center;flex-wrap:wrap}
+  .hero h1{font-size:31px!important}
+  .hero p{font-size:12.5px!important;line-height:1.58!important}
+  .sectionhead .title{font-size:26px!important}
+  .sectionhead .sub{font-size:12px!important}
+  #grid .blog-card{flex-basis:84vw!important;max-width:84vw!important;padding:14px!important}
+  #grid .blog-card h3{font-size:15.5px!important}
+  #grid .blog-card p{font-size:11.5px!important}
+  #grid .blog-card img{height:145px!important}
+  .fixed-section-head{margin:34px auto 15px}
+  .fixed-section-head h2{font-size:24px!important}
+  .fixed-section-head p{font-size:11.5px!important;line-height:1.55}
+  .fixed-blog-grid{padding:0!important;gap:12px!important}
+  .fixed-blog-grid .blog-card{padding:13px!important;border-radius:16px!important}
+  .fixed-blog-grid .article-image{height:125px!important}
+  .fixed-blog-grid .blog-card h3{font-size:14.5px!important}
+  .fixed-blog-grid .blog-card p{font-size:11px!important}
+  .fixed-blog-grid .article{font-size:11px!important;line-height:1.67!important;padding:11px 12px!important}
+  .footer-services{font-size:10.5px;line-height:1.65;padding:0 5px}
+}
+</style>
+
+<style id="astro-avyug-fun-motion-v1">
+/* Light playful motion only — layout, auto-blog marker and card structure remain unchanged. */
+.hero .kicker{position:relative;display:inline-block;animation:kickerGlow 3.6s ease-in-out infinite}
+.hero .kicker::before,.hero .kicker::after{position:absolute;top:50%;transform:translateY(-50%);color:#ffe4a0;font-size:11px;opacity:.55;animation:tinyTwinkle 2.4s ease-in-out infinite}
+.hero .kicker::before{content:"✦";left:-20px}.hero .kicker::after{content:"✧";right:-20px;animation-delay:-1.2s}
+@keyframes kickerGlow{0%,100%{text-shadow:0 0 0 rgba(255,220,140,0)}50%{text-shadow:0 0 14px rgba(255,220,140,.34)}}
+@keyframes tinyTwinkle{0%,100%{opacity:.28;transform:translateY(-50%) scale(.78) rotate(0)}50%{opacity:.95;transform:translateY(-50%) scale(1.18) rotate(16deg)}}
+
+/* Automatic slider: gentle life without changing position/snap behavior. */
+#grid .blog-card{isolation:isolate;overflow:hidden}
+#grid .blog-card::after{content:"";position:absolute;z-index:0;inset:-45% -90%;pointer-events:none;background:linear-gradient(105deg,transparent 43%,rgba(255,235,176,.055) 49%,rgba(151,230,255,.07) 52%,transparent 58%);transform:translateX(-34%);animation:autoCardAurora 8.5s ease-in-out infinite}
+#grid .blog-card>*{position:relative;z-index:1}
+#grid .blog-card:nth-child(2)::after{animation-delay:-2.8s}#grid .blog-card:nth-child(3)::after{animation-delay:-5.6s}
+@keyframes autoCardAurora{0%,72%,100%{transform:translateX(-38%)}86%{transform:translateX(38%)}}
+#grid .blog-card:first-child::before{animation:latestPulse 2.6s ease-in-out infinite}
+@keyframes latestPulse{0%,100%{box-shadow:0 0 0 rgba(255,229,161,0);transform:scale(1)}50%{box-shadow:0 0 16px rgba(255,229,161,.20);transform:scale(1.035)}}
+.blog-slide-btn:not(:disabled){animation:arrowFloat 3.2s ease-in-out infinite}
+#blogNext{animation-delay:-1.6s}
+@keyframes arrowFloat{0%,100%{box-shadow:0 10px 28px rgba(0,0,0,.28);transform:translateY(0)}50%{box-shadow:0 12px 32px rgba(0,0,0,.34),0 0 12px rgba(255,226,160,.08);transform:translateY(-2px)}}
+
+/* Six fixed cards: playful sparkle, soft float and button shine. */
+.fixed-blog-grid .blog-card{isolation:isolate}
+.fixed-blog-grid .blog-card::before{content:"";position:absolute;z-index:0;left:-65%;top:-35%;width:48%;height:180%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),rgba(255,224,155,.09),transparent);transform:rotate(16deg);animation:fixedCardShine 7.2s ease-in-out infinite}
+.fixed-blog-grid .blog-card>*{position:relative;z-index:1}
+.fixed-blog-grid .blog-card:nth-child(2)::before{animation-delay:-1.2s}.fixed-blog-grid .blog-card:nth-child(3)::before{animation-delay:-2.4s}.fixed-blog-grid .blog-card:nth-child(4)::before{animation-delay:-3.6s}.fixed-blog-grid .blog-card:nth-child(5)::before{animation-delay:-4.8s}.fixed-blog-grid .blog-card:nth-child(6)::before{animation-delay:-6s}
+@keyframes fixedCardShine{0%,70%,100%{left:-65%}86%{left:125%}}
+.fixed-blog-grid .blog-icon{filter:drop-shadow(0 0 0 rgba(255,220,150,0));animation:funIconDance 4.8s ease-in-out infinite!important}
+.fixed-blog-grid .blog-card:nth-child(2) .blog-icon{animation-delay:-.8s!important}.fixed-blog-grid .blog-card:nth-child(3) .blog-icon{animation-delay:-1.6s!important}.fixed-blog-grid .blog-card:nth-child(4) .blog-icon{animation-delay:-2.4s!important}.fixed-blog-grid .blog-card:nth-child(5) .blog-icon{animation-delay:-3.2s!important}.fixed-blog-grid .blog-card:nth-child(6) .blog-icon{animation-delay:-4s!important}
+@keyframes funIconDance{0%,78%,100%{transform:translateY(0) rotate(0) scale(1);filter:drop-shadow(0 0 0 rgba(255,220,150,0))}84%{transform:translateY(-3px) rotate(-7deg) scale(1.08);filter:drop-shadow(0 0 8px rgba(255,220,150,.32))}90%{transform:translateY(0) rotate(6deg) scale(1.06)}94%{transform:translateY(-1px) rotate(-2deg) scale(1.03)}}
+.fixed-blog-grid .read button{position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,border-color .2s ease!important}
+.fixed-blog-grid .read button::after{content:"";position:absolute;top:-30%;bottom:-30%;left:-55%;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-18deg);animation:readButtonShine 4.8s ease-in-out infinite}
+.fixed-blog-grid .read button:hover{transform:translateY(-1px) scale(1.025);background:rgba(255,226,160,.13)!important;border-color:rgba(255,226,160,.38)!important}
+@keyframes readButtonShine{0%,72%,100%{left:-55%}88%{left:125%}}
+.fixed-section-head h2{animation:sectionTitleGlow 4s ease-in-out infinite}
+@keyframes sectionTitleGlow{0%,100%{text-shadow:0 0 0 rgba(255,225,155,0)}50%{text-shadow:0 0 18px rgba(255,225,155,.14)}}
+
+@media(max-width:720px){
+  .hero .kicker::before{left:-15px}.hero .kicker::after{right:-15px}
+  .blog-slide-btn:not(:disabled){animation-duration:4s}
+  .fixed-blog-grid .blog-card::before{opacity:.7}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .kicker,.hero .kicker::before,.hero .kicker::after,#grid .blog-card::after,#grid .blog-card:first-child::before,.blog-slide-btn,.fixed-blog-grid .blog-card::before,.fixed-blog-grid .blog-icon,.fixed-blog-grid .read button::after,.fixed-section-head h2{animation:none!important}
+}
+
+
+/* ===== Book Consultation attention CTA — visual only, logic unchanged ===== */
+#bookConsultationBtn{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-width:170px;
+  border:1px solid rgba(255,232,166,.90)!important;
+  background:linear-gradient(120deg,#fff0ad 0%,#f4bf58 28%,#ff8f4d 58%,#d86cff 100%)!important;
+  color:#241006!important;
+  font-weight:950!important;
+  letter-spacing:.25px;
+  box-shadow:
+    0 0 0 0 rgba(255,191,88,.48),
+    0 10px 28px rgba(255,136,64,.28),
+    0 0 24px rgba(221,104,255,.22)!important;
+  transform:translateZ(0);
+  animation:consultAttention 2.8s ease-in-out infinite;
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+}
+#bookConsultationBtn::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-35%;
+  left:-55%;
+  width:36%;
+  height:175%;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.88),transparent);
+  filter:blur(.2px);
+  animation:consultShine 2.7s ease-in-out infinite;
+}
+#bookConsultationBtn::after{
+  content:"✦";
+  display:inline-block;
+  margin-left:8px;
+  color:#fff7d3;
+  text-shadow:0 0 8px #fff,0 0 16px rgba(255,255,255,.8);
+  animation:consultStar 1.5s ease-in-out infinite;
+}
+#bookConsultationBtn:hover,
+#bookConsultationBtn:focus-visible{
+  transform:translateY(-3px) scale(1.045)!important;
+  box-shadow:
+    0 0 0 6px rgba(255,190,79,.12),
+    0 14px 34px rgba(255,126,64,.36),
+    0 0 32px rgba(219,103,255,.30)!important;
+  outline:none;
+}
+#bookConsultationBtn:active{transform:translateY(-1px) scale(.985)!important}
+@keyframes consultAttention{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 0 rgba(255,191,88,.42),0 10px 28px rgba(255,136,64,.28),0 0 24px rgba(221,104,255,.20)}
+  45%{transform:translateY(-2px) scale(1.025);box-shadow:0 0 0 8px rgba(255,191,88,0),0 14px 34px rgba(255,136,64,.36),0 0 34px rgba(221,104,255,.30)}
+  58%{transform:translateY(0) scale(1.005)}
+}
+@keyframes consultShine{
+  0%,28%{left:-55%;opacity:0}
+  38%{opacity:1}
+  62%{left:125%;opacity:.92}
+  63%,100%{left:125%;opacity:0}
+}
+@keyframes consultStar{
+  0%,100%{transform:rotate(-8deg) scale(.88);opacity:.75}
+  50%{transform:rotate(12deg) scale(1.22);opacity:1}
+}
+@media(max-width:720px){
+  #bookConsultationBtn{
+    min-width:158px;
+    padding:11px 17px!important;
+    font-size:12.5px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #bookConsultationBtn,#bookConsultationBtn::before,#bookConsultationBtn::after{animation:none!important}
+}
+</style>
+
 </head>
 <body>
-<div class="top-contact"><div class="wrap top-contact-inner">
-<span>💬 <a href="https://wa.me/447417450989" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">+44 7417 450989</a></span>
-<span>✉️ <a href="mailto:avyug.astro.solution@gmail.com">avyug.astro.solution@gmail.com</a></span>
-</div></div>
-
 <header class="aa-brand-headline">
 <div>
 <div class="aa-title animated-headline">Astro Avyug Solution</div>
 <div class="aa-sub">Vedic Astrology • Numerology • Kundli • Tarot • Healing</div>
 </div>
 </header>
+<div class="top-contact"><div class="wrap top-contact-inner">
+<span>💬 <a href="https://wa.me/447417450989" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">+44 7417 450989</a></span>
+<span>✉️ <a href="mailto:avyug.astro.solution@gmail.com">avyug.astro.solution@gmail.com</a></span>
+</div></div>
+
+<nav class="blog-home-nav"><div class="wrap navin">
+<button class="mobile-menu-toggle" id="blogMobileMenuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="blogMobileNavMenu"><span aria-hidden="true">☰</span></button>
+<a class="brand" href="/">🔮 ASTRO AVYUG SOLUTION</a>
+<div class="links" id="blogMobileNavMenu">
+<a href="/about-astro-avyug.html">About</a>
+<a href="/services/vedic-astrology.html">Vedic Astrology</a>
+<a href="/#tarot">Tarot</a>
+<a href="/#kundli">Kundli</a>
+<a href="/#daily-horoscope">Daily Horoscope</a>
+<a href="/hi/blog/" aria-current="page">Blog</a>
+<a href="/#consultation">Consultation</a>
+</div>
+<a class="wa" href="https://wa.me/447417450989" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div></nav>
+
+
 
 <main>
 <section class="hero">
@@ -523,8 +926,26 @@ h1, h2, h3 {
 <div class="filters">
 <button class="filter active" data-cat="all">All</button><button class="filter" data-cat="astrology">Astrology</button><button class="filter" data-cat="kundli">Kundli</button><button class="filter" data-cat="tarot">Tarot</button><button class="filter" data-cat="numerology">Numerology</button><button class="filter" data-cat="relationship">Relationship</button><button class="filter" data-cat="career">Career</button>
 </div>
+<div class="blog-slider-head" aria-label="Blog slider controls">
+  <div class="blog-slider-hint"><strong>Latest Automatic Blogs</strong><span>Swipe left/right or use arrows to browse older automatic posts</span></div>
+  <div class="blog-slider-controls">
+    <button type="button" class="blog-slide-btn" id="blogPrev" aria-label="Previous / newer article">‹</button>
+    <button type="button" class="blog-slide-btn" id="blogNext" aria-label="Next / older article">›</button>
+  </div>
+</div>
 <div class="blog-grid" id="grid" style="margin-top:28px">
+<article class="blog-card" data-cat="त्योहार और व्रत" data-text="अनंत चतुर्दशी 2026: गणेश विसर्जन के साथ आज करें संकल्प, शांति और आत्ममंथन का उपाय 25 सितंबर 2026 को अनंत चतुर्दशी और गणेश विसर्जन का पर्व मनाया जा रहा है। जानिए इस दिन का आध्यात्मिक महत्व, पूजा की सरल विधि, राशि अनुसार उपाय और किन बातों का ध्यान रखना चाहिए।"><a href="/blog/posts/anant-chaturdashi-2026-ganesh-visarjan-astrology.html" style="text-decoration:none"><img src="/blog/images/anant-chaturdashi-2026-ganesh-visarjan-astrology.png" alt="अनंत चतुर्दशी 2026: गणेश विसर्जन के साथ आज करें संकल्प, शांति और आत्ममंथन का उपाय" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:16px;display:block;margin-bottom:16px"></a><span class="tag">त्योहार और व्रत</span><h3>अनंत चतुर्दशी 2026: गणेश विसर्जन के साथ आज करें संकल्प, शांति और आत्ममंथन का उपाय</h3><p>25 सितंबर 2026 को अनंत चतुर्दशी और गणेश विसर्जन का पर्व मनाया जा रहा है। जानिए इस दिन का आध्यात्मिक महत्व, पूजा की सरल विधि, राशि अनुसार उपाय और किन बातों का ध्यान रखना चाहिए।</p><div class="read"><a href="/blog/posts/anant-chaturdashi-2026-ganesh-visarjan-astrology.html">Read More →</a></div></article>
+<article class="blog-card" data-cat="खगोलीय घटना" data-text="23 सितंबर 2026 का शरद विषुव: संतुलन, आत्मचिंतन और नए संकल्प का ज्योतिषीय संदेश 23 सितंबर 2026 को शरद विषुव घटित हो रहा है। जानिए इस खगोलीय घटना का वैज्ञानिक महत्व, वैदिक दृष्टि से इसका संकेत और आज के दिन अपनाई जा सकने वाली सरल, व्यावहारिक साधनाएं।"><a href="/blog/posts/23-september-2026-sharad-vishuv-jyotishiya-mahatva.html" style="text-decoration:none"><img src="/blog/images/23-september-2026-sharad-vishuv-jyotishiya-mahatva.png" alt="23 सितंबर 2026 का शरद विषुव: संतुलन, आत्मचिंतन और नए संकल्प का ज्योतिषीय संदेश" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:16px;display:block;margin-bottom:16px"></a><span class="tag">खगोलीय घटना</span><h3>23 सितंबर 2026 का शरद विषुव: संतुलन, आत्मचिंतन और नए संकल्प का ज्योतिषीय संदेश</h3><p>23 सितंबर 2026 को शरद विषुव घटित हो रहा है। जानिए इस खगोलीय घटना का वैज्ञानिक महत्व, वैदिक दृष्टि से इसका संकेत और आज के दिन अपनाई जा सकने वाली सरल, व्यावहारिक साधनाएं।</p><div class="read"><a href="/blog/posts/23-september-2026-sharad-vishuv-jyotishiya-mahatva.html">Read More →</a></div></article>
+<article class="blog-card" data-cat="ज्योतिष और खगोल" data-text="23 सितंबर 2026: शरद विषुव और आयुर्वेद दिवस पर संतुलन, स्वास्थ्य व नई शुरुआत का ज्योतिषीय संदेश 23 सितंबर 2026 को शरद विषुव का खगोलीय अवसर और आयुर्वेद दिवस जीवन में संतुलन, दिनचर्या और आत्मचिंतन का संदेश देते हैं। जानिए इस दिन का ज्योतिषीय महत्व और सरल, व्यावहारिक उपाय।"><span class="tag">ज्योतिष और खगोल</span><h3>23 सितंबर 2026: शरद विषुव और आयुर्वेद दिवस पर संतुलन, स्वास्थ्य व नई शुरुआत का ज्योतिषीय संदेश</h3><p>23 सितंबर 2026 को शरद विषुव का खगोलीय अवसर और आयुर्वेद दिवस जीवन में संतुलन, दिनचर्या और आत्मचिंतन का संदेश देते हैं। जानिए इस दिन का ज्योतिषीय महत्व और सरल, व्यावहारिक उपाय।</p><div class="read"><a href="/blog/posts/23-september-2026-sharad-vishuv-ayurveda-diwas-jyotishiya-sandesh.html">Read More →</a></div></article>
 
+</div>
+
+<div class="fixed-section-head">
+  <div class="eyebrow">EXPLORE • LEARN • UNDERSTAND</div>
+  <h2>Astrology Guidance Library</h2>
+  <p>इन 6 विषयों में practical guidance पढ़ें। किसी card पर Read More दबाकर पूरा लेख साफ़ paragraph format में देखें।</p>
+</div>
+<div class="blog-grid fixed-blog-grid" id="fixedGrid" style="margin-top:28px">
 <article class="blog-card" data-cat="astrology" data-text="vedic astrology planets houses dasha">
 <img class="article-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNTAwIj4KICAgIDxkZWZzPgogICAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI0NSUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMwMjE1ZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA3MWEzOCIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjkiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiByeD0iMzAiIGZpbGw9InVybCgjZykiLz4KICAgIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjI1MCIgcj0iMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNWQxN2MiIHN0cm9rZS1vcGFjaXR5PSIuNiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8Y2lyY2xlIGN4PSI0NTAiIGN5PSIyNTAiIHI9IjExMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOWJkZmZmIiBzdHJva2Utb3BhY2l0eT0iLjM1IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjI1MCIgcj0iNzUiIGZpbGw9IiMwYjBhMjAiIHN0cm9rZT0iI2Y1ZDE3YyIgc3Ryb2tlLW9wYWNpdHk9Ii41NSIvPgogICAgPHRleHQgeD0iNDUwIiB5PSIyNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNzgiIGZpbGw9IiNmZmU1YTEiIGZpbHRlcj0idXJsKCNnbG93KSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEiPuClkDwvdGV4dD4KICAgIDxnIGZpbGw9IiNmNmM5NmYiPgogICAgICA8Y2lyY2xlIGN4PSI0NTAiIGN5PSI3MyIgcj0iMTAiLz48Y2lyY2xlIGN4PSI2MjciIGN5PSIyNTAiIHI9IjEyIi8+PGNpcmNsZSBjeD0iNDUwIiBjeT0iNDI3IiByPSI5Ii8+PGNpcmNsZSBjeD0iMjczIiBjeT0iMjUwIiByPSIxMSIvPgogICAgPC9nPgogICAgPGcgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjc1Ij48Y2lyY2xlIGN4PSI5MCIgY3k9IjkwIiByPSIyIi8+PGNpcmNsZSBjeD0iNzkwIiBjeT0iOTUiIHI9IjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI0MTAiIHI9IjIiLz48Y2lyY2xlIGN4PSI3NjAiIGN5PSIzOTAiIHI9IjIiLz48L2c+CiAgICA8dGV4dCB4PSI0MiIgeT0iNDIwIiBmaWxsPSIjZmZlOGFkIiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIzMCIgZm9udC13ZWlnaHQ9IjcwMCI+VmVkaWMgQXN0cm9sb2d5PC90ZXh0PgogICAgPHRleHQgeD0iNDIiIHk9IjQ1NSIgZmlsbD0iI2RlZDVlOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE5Ij5QbGFuZXRzIOKAoiBIb3VzZXMg4oCiIERhc2hhczwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Vedic Astrology illustration" loading="lazy"><div class="blog-icon">🌌</div><span class="tag">Astrology</span>
 <h3>How Vedic Astrology Helps You Understand Life Patterns</h3>
@@ -605,7 +1026,12 @@ For an actual career decision, practical factors remain essential: qualification
 </section>
 </main>
 
-<footer><div class="wrap">© 2020 Astro Avyug • Vedic Astrology • Kundli • Tarot • Numerology</div></footer>
+<footer class="home-like-footer"><div class="wrap">
+  <div class="footer-brand">Astro Avyug Solution</div>
+  <div class="footer-services">Vedic Astrology • Kundli Analysis • Kundli Matching • Tarot Reading • Numerology • Marriage & Relationship Guidance • Career Guidance</div>
+  <div class="footer-links"><a href="/">Home</a><span>•</span><a href="/blog/">Blog</a><span>•</span><a href="/#consultation">Consultation</a></div>
+  <div class="footer-copy">© 2020 Astro Avyug</div>
+</div></footer>
 
 <div class="social-dock"><a class="social-wa" href="https://wa.me/447417450989" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.55 0 .23 5.32.23 11.85c0 2.09.55 4.14 1.6 5.94L.12 24l6.37-1.67a11.84 11.84 0 0 0 5.59 1.42h.01c6.53 0 11.85-5.32 11.85-11.85 0-3.17-1.24-6.15-3.44-8.4ZM12.09 21.7h-.01a9.84 9.84 0 0 1-5.02-1.37l-.36-.21-3.78.99 1.01-3.68-.23-.38a9.82 9.82 0 1 1 8.39 4.65Zm5.4-7.38c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.19.29-.76.95-.93 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.43-.86-.76-1.44-1.69-1.61-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5h-.56c-.19 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.2 3.02c.15.19 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.71.23 1.36.2 1.87.12.57-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.19-.56-.34Z"/></svg></a><a class="social-ig" href="https://www.instagram.com/astro_avyug" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.7" r="1.2" fill="currentColor"/></svg></a></div>
 
@@ -790,16 +1216,57 @@ Kripya consultation ka available time aur process bata dijiye. Dhanyavaad 🙏`;
   });
 })();
 </script>
-
-
-<div class="seo-indexing-note" aria-label="Astro Avyug services">
-Vedic Astrology • Kundli Analysis • Kundli Matching • Tarot Reading • Numerology • Marriage & Relationship Guidance • Career Guidance
-</div>
-
-
-
-
-<div style="text-align:center;margin:16px 0;"><a href="/">Astro Avyug Home</a></div>
 <script src="/pwa-install.js" defer></script>
+
+<script id="astro-avyug-blog-slider-js">
+(function(){
+  const grid=document.getElementById('grid');
+  const prev=document.getElementById('blogPrev');
+  const next=document.getElementById('blogNext');
+  if(!grid||!prev||!next) return;
+
+  const visibleCards=()=>[...grid.querySelectorAll('.blog-card')].filter(card=>getComputedStyle(card).display!=='none');
+  const step=()=>{
+    const cards=visibleCards();
+    if(!cards.length) return Math.max(280,grid.clientWidth*.86);
+    const gap=parseFloat(getComputedStyle(grid).gap)||20;
+    return cards[0].getBoundingClientRect().width+gap;
+  };
+  const updateButtons=()=>{
+    const max=Math.max(0,grid.scrollWidth-grid.clientWidth-2);
+    prev.disabled=grid.scrollLeft<=2;
+    next.disabled=grid.scrollLeft>=max;
+  };
+  prev.addEventListener('click',()=>grid.scrollBy({left:-step(),behavior:'smooth'}));
+  next.addEventListener('click',()=>grid.scrollBy({left:step(),behavior:'smooth'}));
+  grid.addEventListener('scroll',()=>requestAnimationFrame(updateButtons),{passive:true});
+  window.addEventListener('resize',updateButtons);
+
+  /* After search/filter changes, bring the newest matching card to the front. */
+  const observer=new MutationObserver(()=>{
+    clearTimeout(grid._astroSliderTimer);
+    grid._astroSliderTimer=setTimeout(()=>{grid.scrollTo({left:0,behavior:'smooth'});updateButtons();},60);
+  });
+  [...grid.querySelectorAll('.blog-card')].forEach(card=>observer.observe(card,{attributes:true,attributeFilter:['style','class']}));
+
+  grid.scrollLeft=0;
+  setTimeout(updateButtons,80);
+})();
+</script>
+
+<script id="blog-home-nav-script">
+(function(){
+  const btn=document.getElementById('blogMobileMenuToggle');
+  const menu=document.getElementById('blogMobileNavMenu');
+  if(!btn||!menu) return;
+  btn.addEventListener('click',function(){
+    const open=menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    menu.classList.remove('open');btn.setAttribute('aria-expanded','false');
+  }));
+})();
+</script>
 </body>
 </html>
