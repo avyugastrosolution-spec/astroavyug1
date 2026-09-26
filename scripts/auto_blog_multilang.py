@@ -432,6 +432,15 @@ article_template = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EGB6BFB0Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7EGB6BFB0Y');
+</script>
+
 <title>TITLE | Astro Avyug</title>
 <meta name="description" content="DESC">
 <link rel="canonical" href="CANONICAL">
@@ -441,8 +450,11 @@ article_template = """<!doctype html>
 <link rel="alternate" hreflang="x-default" href="HI_URL">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#100b25">
 
 <meta property="og:type" content="article">
@@ -886,6 +898,53 @@ if entries:
 
     print("Sitemap updated")
 
+
+
+# ============================================================
+# 7. UPDATE RSS FEED AND BLOG SITEMAP
+# ============================================================
+
+from xml.sax.saxutils import escape as xml_escape
+
+feed_file = ROOT / "feed.xml"
+if feed_file.exists():
+    feed_text = feed_file.read_text(encoding="utf-8")
+    feed_items = ""
+    for article, article_url, lang_code in (
+        (hi_article, hi_url, "hi-IN"),
+        (en_article, en_url, "en-IN"),
+    ):
+        if article_url not in feed_text:
+            feed_items += (
+                "<item>"
+                "<title>" + xml_escape(str(article["title"])) + "</title>"
+                "<link>" + xml_escape(article_url) + "</link>"
+                "<guid isPermaLink=\"true\">" + xml_escape(article_url) + "</guid>"
+                "<description>" + xml_escape(str(article["excerpt"])) + "</description>"
+                "<category>" + xml_escape(str(article["category"])) + "</category>"
+                "<pubDate>" + today.strftime("%a, %d %b %Y 00:00:00 +0530") + "</pubDate>"
+                "</item>\n"
+            )
+    if feed_items:
+        if "</channel>" not in feed_text:
+            raise SystemExit("Closing </channel> not found in feed.xml")
+        feed_text = feed_text.replace("</channel>", feed_items + "</channel>", 1)
+        feed_file.write_text(feed_text, encoding="utf-8")
+        print("RSS feed updated")
+
+blog_sitemap = MAIN_BLOG / "sitemap.xml"
+if blog_sitemap.exists():
+    blog_sitemap_text = blog_sitemap.read_text(encoding="utf-8")
+    blog_entries = ""
+    for article_url in (hi_url, en_url):
+        if article_url not in blog_sitemap_text:
+            blog_entries += sitemap_entry(article_url)
+    if blog_entries:
+        if "</urlset>" not in blog_sitemap_text:
+            raise SystemExit("Closing </urlset> not found in blog/sitemap.xml")
+        blog_sitemap_text = blog_sitemap_text.replace("</urlset>", blog_entries + "</urlset>", 1)
+        blog_sitemap.write_text(blog_sitemap_text, encoding="utf-8")
+        print("Blog sitemap updated")
 
 # ============================================================
 # DONE
