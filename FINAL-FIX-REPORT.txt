@@ -1,0 +1,39 @@
+ASTRO AVYUG - FINAL TECHNICAL FIX REPORT
+Date: 2026-09-26
+
+Fixed:
+1. Broken root-relative links on /en/ and /hi/ (About, sitemap, review videos).
+2. Google Analytics G-7EGB6BFB0Y added to every current HTML page.
+3. Auto-generated Hindi/English blog article template now includes Google Analytics.
+4. Career, Marriage, Numerology and service breadcrumb structured-data paths corrected.
+5. Marriage Guidance structured-data description corrected.
+6. 404 Organization logo schema corrected to /favicon-512x512.png.
+7. Hindi home and Hindi blog localized so /hi/ is no longer a duplicate of English.
+8. English horoscope block normalized to English.
+9. Legacy Hindi automatic cards removed from the English blog landing page.
+10. Embedded base64 images externalized to /assets/embedded/ without changing visuals; HTML is much smaller.
+11. Auto-blog now updates root sitemap.xml, blog/sitemap.xml and feed.xml.
+12. GitHub workflow now commits feed.xml changes too.
+13. Existing Hindi blog post URLs added to blog/sitemap.xml.
+14. RSS channel marked multilingual (mul).
+
+Validation completed:
+- No missing local file references found.
+- All HTML pages contain Google Analytics.
+- JSON-LD parses successfully.
+- sitemap.xml, blog/sitemap.xml, services-sitemap.xml and feed.xml parse successfully.
+- auto_blog_multilang.py compiles successfully.
+- Inline JavaScript syntax checked successfully.
+- Auto-blog end-to-end simulated run passed: HI+EN posts, image, indexes, both sitemaps and RSS updated.
+
+FINAL CAREER GUIDANCE LAYOUT CHECK
+- Career Guidance mobile/tablet top navigation was previously stacking all links vertically.
+- Replaced that mobile/tablet behavior with a compact 3-line hamburger menu.
+- Desktop navigation, hero design, cards, content, animations, PWA files and service content remain unchanged.
+
+FINAL VALIDATION
+- Local file references: 0 missing
+- XML files: valid
+- JSON-LD blocks: valid
+- Auto-blog Python scripts: compile successfully
+- GitHub auto-blog workflow YAML: valid
